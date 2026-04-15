@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Batch Token Printing | parkrun Spare Finish Token Generator</title>
+
+    <!-- Meta Tags for SEO -->
+    <meta name="keywords" content="parkrun, parkrun Generator, parkrun Tokens, parkrun Token, parkrun finish tokens, finish token, parkrun, parkrun barcode, Barcode generator for parkrun, Replacement Tokens, Sticker">
+    <meta name="description" content="Generate parkrun finish tokens quickly and easily with this parkrun Token Generator. Perfect for event organisers and volunteers.">
+    <meta name="author" content="Jake Lofthouse">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="parkrun Spare Finish Token Generator" />
+    <meta property="og:description" content="Easily generate replacement parkrun finish tokens for your event. Fast, simple & free." />
+    <meta property="og:url" content="http://spare-tokens.parkrunnertourist.com/Batch" />
+    <link rel="canonical" href="http://spare-tokens.parkrunnertourist.com/Batch" />
+
+    <!-- Twitter Card for Better Social Media Display -->
+    <meta name="twitter:title" content="parkrun Replacement Token Generator" />
+    <meta name="twitter:description" content="Create parkrun finish tokens effortlessly with this free tool." />
+    <link rel="shortcut icon" type="image/x.icon" href="favicon.ico?">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            background: #f0f0f0 url('Background.png') center/cover no-repeat;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 16px);
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"], input[type="button"] {
+            background-color: #2C2947;
+            color: #fff;
+            padding: 15px 25px; /* Larger padding for larger buttons */
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover, input[type="button"]:hover {
+            background-color: #524f7e;
+        }
+#uiCopyright {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        font-size: 14px;
+        color: #FFFFFF;
+        background-color: #2C2947;
+        padding: 5px 10px;
+        border-radius: 10px; /* Rounded box */
+        }
+
+        #o {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+            #tt {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #buttons {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        #buttons button {
+            background-color: #2C2947;
+            color: #fff;
+            padding: 50px 100px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 24px;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+
+        #buttons button:hover {
+            background-color: #524f7e;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            #o, #o * {
+                visibility: visible;
+            }
+
+            #o {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+            #animated-bg {
+                display: none;
+            }
+
+            #buttons {
+                display: none;
+            }
+        }
+
+        .ui-enabled #animated-bg {
+            display: block;
+        }
+
+        .warning {
+            color: #e74c3c;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+        
+        #homeButton {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #2C2947;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            z-index: 3; /* Ensure the home button is above other elements */
+            transition: background-color 0.3s;
+        }
+
+        #homeButton:hover {
+            background-color: #524f7e;
+        }
+        
+
+        @viewport {
+            zoom: 1.0 !important;
+            user-zoom: fixed !important;
+            max-zoom: 1.0 !important;
+            min-zoom: 1.0 !important;
+        }
+    </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2MCNPFMJVM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2MCNPFMJVM');
+</script>
+    
+<body>
+
+    <div id="animated-bg"></div>
+
+    <div id="buttons">
+        <button id="backButton" onclick="clearResults()">Back</button>
+        <button id="printButton" onclick="printResults()">Print</button>
+    </div>
+
+    <form class="noPrint" action="javascript:void(0);" method="get" name="f">
+        <h1>Batch position token printing</h1>
+    <div id="tt"></div>
+        <label for="startNumber">Start Position:</label>
+        <input type="text" id="startNumber" name="start" placeholder="Enter start number here" required>
+
+        <label for="endNumber">End Position:</label>
+        <input type="text" id="endNumber" name="end" placeholder="Enter end number here" required>
+
+        <input type="submit" value="Submit" onclick="checkInput()">
+        <div id="warningStart" class="warning"></div>
+        <div id="warningEnd" class="warning"></div>
+    </form>
+
+    <div id="o"></div>
+        <div id="uiCopyright">
+        &copy; <span id="copyrightYear"></span> Jake Lofthouse
+    </div>
+    
+    <button id="homeButton" onclick="goHome()">Home</button>
+
+
+    <script>
+    
+        function goHome() {
+        window.location.href = "http://spare-tokens.parkrunnertourist.com/";
+    }
+    
+        function hideUI() {
+            var form = document.querySelector('form');
+            form.style.display = 'none';
+            form.classList.add('ui-enabled'); // Add class to enable animated background
+            showButtons();
+        }
+
+        function showUI() {
+            var form = document.querySelector('form');
+            form.style.display = 'block';
+            form.classList.remove('ui-enabled'); // Remove class to disable animated background
+            hideButtons();
+        }
+
+        function showButtons() {
+            var buttons = document.getElementById('buttons');
+            buttons.style.display = 'flex';
+        }
+
+        function hideButtons() {
+            var buttons = document.getElementById('buttons');
+            buttons.style.display = 'none';
+        }
+
+        function clearResults() {
+            var div = document.getElementById('o');
+            div.innerHTML = '';
+            div.style.opacity = '0';
+            showUI(); // Show the UI when clearing results
+        }
+
+        function printResults() {
+            setOpacity('1');
+            window.print();
+        }
+
+        function checkInput() {
+            var startNumber = document.getElementById('startNumber').value;
+            var endNumber = document.getElementById('endNumber').value;
+            var warningStart = document.getElementById('warningStart');
+            var warningEnd = document.getElementById('warningEnd');
+
+            warningStart.textContent = '';
+            warningEnd.textContent = '';
+
+            if (!isValidNumber(startNumber)) {
+                warningStart.textContent = 'Please enter a valid number greater than 0.';
+                return;
+            }
+
+            if (!isValidNumber(endNumber)) {
+                warningEnd.textContent = 'Please enter a valid number greater than 0.';
+                return;
+            }
+
+            var start = parseInt(startNumber);
+            var end = parseInt(endNumber);
+
+            if (start > end) {
+                warningStart.textContent = 'Start position should be less than or equal to End position.';
+                return;
+            }
+
+            var div = document.getElementById('o');
+          //
+            div.style.opacity = '0';
+
+            hideUI(); // Hide the UI when processing results
+
+            for (var i = start; i <= end; i++) {
+                var x = '0000' + i;
+                div.innerHTML += '<img src=\'http://results-service.parkrun.com/runnerSupport/BarcodeImagery/image.php?code=P' + x.substr(x.length - 4) + '\'><br>';
+            }
+
+            showButtons(); // Show buttons when barcodes are generated
+        }
+        
+        function setOpacity(opacityValue) {
+    var div = document.getElementById('o');
+    div.style.opacity = opacityValue;
+}
+
+        function isValidNumber(value) {
+            return !isNaN(value) && parseInt(value) > 0;
+        }
+        
+        window.addEventListener('afterprint', function () {
+            setOpacity('0');
+        });
+        
+    function backButtonPressed() {
+        // Recover the values that the user inputted before pressing submit
+        var startNumber = document.getElementById('startNumber').value;
+        var endNumber = document.getElementById('endNumber').value;
+
+        // Set the recovered values back to the input fields
+        document.getElementById('startNumber').value = startNumber;
+        document.getElementById('endNumber').value = endNumber;
+
+        clearResults(); // Clear results as per your existing logic
+    }
+    
+    // Function to get the current year
+        function getCurrentYear() {
+            return new Date().getFullYear();
+        }
+
+        // Function to update the copyright year
+        function updateCopyrightYear() {
+            document.getElementById('copyrightYear').textContent = getCurrentYear();
+        }
+
+        // Call the function to update the copyright year
+        updateCopyrightYear();
+        
+        if ("serial" in navigator) {
+            console.log("Device is not a phone or tablet");
+        } else {
+           window.location.href = "http://spare-tokens.parkrunnertourist.com/Not_Supported";
+        }
+        
+    </script>
+
+    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="jlofthouse" data-description="Support me on Buy me a coffee!" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+    
+    </body>
+</html>
