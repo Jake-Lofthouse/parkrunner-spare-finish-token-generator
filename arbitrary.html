@@ -214,6 +214,7 @@
             border: none;
             border-radius: 6px;
             cursor: pointer;
+            text-decoration: none;
             z-index: 3; /* Ensure the home button is above other elements */
             transition: background-color 0.3s;
         }
@@ -254,23 +255,9 @@
     <div id="ii"></div>
     <input type="button" id="printButton" onclick="printBarcodes()" value="Print" style="display: none; font-size: 45px;">
 </div>
-<button id="homeButton" onclick="goHome()">Home</button>
+<a id="homeButton" href="./index.html">Home</a>
 
     <script>
-    
-    
-    if ("serial" in navigator) {
-            console.log("Device is not a phone or tablet");
-        } else {
-           window.location.href = "./Not_Supported";
-        }
-
-    function goHome() {
-        // Redirect the user to the specified URL
-        window.location.href = "./";
-    }
-    
-    
     function handleTokenInput(event) {
         if (event.key === "Tab" || event.key === "Enter" || event.key === " ") {
             event.preventDefault();

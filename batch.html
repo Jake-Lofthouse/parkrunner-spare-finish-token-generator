@@ -175,6 +175,7 @@
             border: none;
             border-radius: 6px;
             cursor: pointer;
+            text-decoration: none;
             z-index: 3; /* Ensure the home button is above other elements */
             transition: background-color 0.3s;
         }
@@ -230,16 +231,10 @@
         &copy; <span id="copyrightYear"></span> Jake Lofthouse
     </div>
     
-    <button id="homeButton" onclick="goHome()">Home</button>
+    <a id="homeButton" href="./index.html">Home</a>
 
 
     <script>
-    
-        function goHome() {
-        // Redirect the user to the specified URL
-        window.location.href = "./";
-    }
-    
         function hideUI() {
             var form = document.querySelector('form');
             form.style.display = 'none';
@@ -354,12 +349,6 @@
 
         // Call the function to update the copyright year
         updateCopyrightYear();
-        
-        if ("serial" in navigator) {
-            console.log("Device is not a phone or tablet");
-        } else {
-           window.location.href = "https://Jake-Lofthouse.github.io/parkrun-token-generator/Not_Supported";
-        }
         
     </script>
 
