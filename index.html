@@ -215,12 +215,6 @@
             loadingOverlay.style.display = 'none';
         });
 
-        if ("serial" in navigator) {
-            console.log("Device is not a phone or tablet");
-        } else {
-            window.location.href = "./Not_Supported";
-        }
-
         // Function to redirect to the Batch Production page
         function goToBatch() {
             window.location.href = "./batch";
