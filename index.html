@@ -57,12 +57,15 @@
         border-radius: 10px; /* Rounded box */
     }
 
-    button {
+    a.option {
+        display: inline-block;
+        box-sizing: border-box;
         border-radius: 4px;
         background-color: #2C2947;
         border: none;
         color: #FFFFFF;
         text-align: center;
+        text-decoration: none;
         font-size: 28px;
         padding: 20px;
         width: 300px;
@@ -71,14 +74,14 @@
         margin: 5px;
     }
 
-    button span {
+    a.option span {
         cursor: pointer;
         display: inline-block;
         position: relative;
         transition: 0.5s;
     }
 
-    button span:after {
+    a.option span:after {
         content: '\25B6';
         position: absolute;
         opacity: 0;
@@ -87,11 +90,11 @@
         transition: 0.5s;
     }
 
-    button:hover span {
+    a.option:hover span {
         padding-right: 25px;
     }
 
-    button:hover span:after {
+    a.option:hover span:after {
         opacity: 1;
         right: 0;
     }
@@ -148,7 +151,6 @@
         margin-bottom: 10px;
     }
     
-    /* New style for the contact button */
     #contactButton {
         position: fixed;
         top: 10px;
@@ -158,6 +160,7 @@
         border: none;
         color: #FFFFFF;
         text-align: center;
+        text-decoration: none;
         font-size: 18px;
         padding: 10px;
         transition: all 0.5s;
@@ -180,8 +183,7 @@
         </div>
     </div>
 
-    <!-- Contact Us button -->
-    <button id="contactButton" onclick="window.location.href = 'https://forms.office.com/r/D0qqtsXS5i';">Contact Us</button>
+    <a id="contactButton" href="https://forms.office.com/r/D0qqtsXS5i">Contact Us</a>
 
     <div id="uiCopyright">
         &copy; <span id="copyrightYear"></span> Jake Lofthouse
@@ -191,8 +193,8 @@
     <div>
         <h1>Select one of the options below:</h1>
 
-        <button id="batchButton" onclick="goToBatch()"><span>Batch Production</span></button>
-        <button id="oddButton" onclick="goToOdd()"><span>Arbitrary Numbers</span></button>
+        <a id="batchButton" class="option" href="./batch.html"><span>Batch Production</span></a>
+        <a id="oddButton" class="option" href="./arbitrary.html"><span>Arbitrary Numbers</span></a>
     </div>
 
     <script>
@@ -214,15 +216,6 @@
             var loadingOverlay = document.querySelector('.loading-overlay');
             loadingOverlay.style.display = 'none';
         });
-
-        // Function to redirect to the Batch Production page
-        function goToBatch() {
-            window.location.href = "./batch";
-        }
-
-        function goToOdd() {
-            window.location.href = "./arbitrary";
-        }
     </script>
 
     <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="jlofthouse" data-description="Support me on Buy me a coffee!" data-message="Support Me" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
